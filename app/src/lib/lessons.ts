@@ -108,7 +108,7 @@ export const LESSONS: Lesson[] = [
   {
     kind: 'text', id: 'accents', title: 'Accents and ñ',
     summary: "Your Mac uses U.S. International – PC, so ' is a dead key: tap ' then o for ó. Shift+' then u gives ü. ~ then n gives ñ.",
-    lines: ['canción', 'está aquí', 'también', 'qué tal, cómo estás', 'mañana', 'el niño come piña', 'pingüino', 'número de teléfono'],
+    lines: ['á é í ó ú', 'canción', 'está aquí', 'también', 'qué tal, cómo estás', 'mañana', 'el niño come piña', 'pingüino', 'número de teléfono'],
   },
   {
     kind: 'keys', id: 'nav', title: 'Arrows and paging',

@@ -6,6 +6,34 @@ The lessons, drills and keyboard drawing are all built around this one keymap: E
 
 The repo also keeps the scripts and backups I used to set up the keymap.
 
+## My layout
+
+**Base layer.** Esc is where Caps Lock was. Cmd and Space are under the left thumb. Space and one-shot Hyper are under the right thumb. The arrow corner matches my QK Alice.
+
+![Base layer](docs/layout-base.png)
+
+**Layer 1 (hold the Layer 1 key, bottom-left).** Numbers on the top row, with symbols around the home row: `` ` `` `;` `-` on the left and `=` `'` `[` `]` `\` on the right. Del, PgUp and PgDn are on the right edge.
+
+![Layer 1](docs/layout-layer1.png)
+
+**Layer 2 (hold the right thumb).** F1–F12, media keys and Bluetooth channels.
+
+![Layer 2](docs/layout-layer2.png)
+
+## The app
+
+Lessons light up the next key on a drawing of the keyboard. Cobalt means hold Layer 1. Amber means hold Layer 2.
+
+![Numbers lesson](docs/practice-numbers.png)
+
+Accents use the `'` dead key: tap `'`, then the vowel.
+
+![Accents lesson](docs/practice-accents.png)
+
+Layer drills keep the layer key held for the whole drill.
+
+![Layer 1 drill](docs/drill-layer1.png)
+
 ## Trainer app
 
 ```sh
