@@ -29,6 +29,7 @@ else:
     # Thumbs: Space on the resting (middle) keys, one-shot mods on the inner tilted keys
     L0[3][4], L0[3][5] = L0[3][5], L0[3][4]   # left:  Space <-> OSM(Cmd+Shift)
     L0[7][4], L0[7][5] = L0[7][5], L0[7][4]   # right: Space <-> OSM(Hyper)
+    L0[7][5] = 0x0F00  # Hyper only while held (like the Alice), not one-shot
     # Cmd on the outer left thumb (Mac muscle memory); Layer 1 moves to Cmd's old bottom-row spot
     L0[3][2], L0[3][3] = L0[3][3], L0[3][2]
     # Layer 1: no Caps Lock anywhere (too easy to hit by accident); brackets on K / L
@@ -46,6 +47,9 @@ else:
     L2[5][2] = NEXT    # L
     L2[6][4] = BRID    # M
     L2[6][3] = BRIU    # ,
+    # Output mode switch (USB priority <-> Bluetooth priority), above BT1-BT3 on the left edge.
+    # In USB priority (the default) a cable in the left half sends keys to USB, even from a wall charger.
+    L2[0][0] = 0x7E06  # SWITCH
     # Unused keys on layers 1-2 -> transparent so mods/thumbs keep working
     for L in (L1, L2):
         for r in range(R):

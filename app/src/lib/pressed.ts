@@ -17,10 +17,10 @@ const osmCache = new WeakMap<Keymap, Osm[]>()
 function oneShots(km: Keymap): Osm[] {
   let list = osmCache.get(km)
   if (!list) {
+    // keys that send a group of modifiers at once: one-shot keys and held combos like Hyper
     list = km.keys
-      .map((k) => ({ id: k.id, kc: km.raw(0, k.row, k.col) }))
-      .filter((x) => describe(x.kc).kind === 'oneshot')
-      .map((x) => ({ id: x.id, mods: (x.kc - 0x52a0) & 0x0f }))
+      .map((k) => ({ id: k.id, mods: describe(km.raw(0, k.row, k.col)).mods ?? 0 }))
+      .filter((x) => [1, 2, 4, 8].filter((b) => x.mods & b).length >= 2)
     osmCache.set(km, list)
   }
   return list

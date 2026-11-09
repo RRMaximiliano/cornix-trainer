@@ -74,6 +74,8 @@ export type KeyInfo = {
   kind: 'char' | 'mod' | 'layer' | 'oneshot' | 'action' | 'none' | 'trans' | 'media' | 'custom'
   /** layer this key activates while held (MO) */
   layer?: number
+  /** modifier bits (C=1 S=2 A=4 G=8) for keys that send a group of modifiers (Hyper, one-shot keys) */
+  mods?: number
   /** plain-language explanation */
   help: string
 }
@@ -96,8 +98,12 @@ export function describe(kc: number): KeyInfo {
     return { label: l ?? `0x${kc.toString(16)}`, kind: 'action', help: `${l ?? 'Key'}.` }
   }
   if (kc < 0x2000) {
-    const inner = describe(kc & 0xff)
     const m = modsName(kc >> 8)
+    if ((kc & 0xff) === 0) {
+      // modifiers only (e.g. Hyper): works while held, like a normal modifier key
+      return { label: m, kind: 'mod', mods: (kc >> 8) & 0x0f, help: `${m} while held. Let go and it's off.` }
+    }
+    const inner = describe(kc & 0xff)
     return { label: `${m}+${inner.label}`, kind: 'action', help: `Sends ${m}+${inner.label}.` }
   }
   if (kc >= 0x5220 && kc < 0x5240) {
@@ -107,13 +113,18 @@ export function describe(kc: number): KeyInfo {
   if (kc >= 0x52a0 && kc < 0x52c0) {
     const m = modsName(kc - 0x52a0)
     return {
-      label: m, kind: 'oneshot',
+      label: m, kind: 'oneshot', mods: (kc - 0x52a0) & 0x0f,
       help: `One-shot ${m}: tap it, then press one key and it gets ${m}. Hold it to use it like a normal modifier.`,
     }
   }
   if (kc >= 0x7e00 && kc < 0x7e40) {
     const label = CUSTOM[kc - 0x7e00] ?? `KB${kc - 0x7e00}`
-    return { label, kind: 'custom', help: label.startsWith('BT') ? `Switch to Bluetooth device ${label.slice(3)}.` : label }
+    const help = label.startsWith('BT')
+      ? `Switch to Bluetooth device ${label.slice(3)}.`
+      : label === 'USB / BT'
+        ? 'Switch between USB priority and Bluetooth priority. In Bluetooth priority, a cable only charges the keyboard.'
+        : label
+    return { label, kind: 'custom', help }
   }
   return { label: `0x${kc.toString(16)}`, kind: 'action', help: 'Special key.' }
 }

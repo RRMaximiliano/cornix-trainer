@@ -8,7 +8,7 @@ The repo also keeps the scripts and backups I used to set up the keymap.
 
 ## My layout
 
-**Base layer.** Esc is where Caps Lock was. Cmd and Space are under the left thumb. Space and one-shot Hyper are under the right thumb. The arrow corner matches my QK Alice.
+**Base layer.** Esc is where Caps Lock was. Cmd and Space are under the left thumb. Space and Hyper are under the right thumb. Hyper works only while held, like on the Alice. The arrow corner matches my QK Alice.
 
 ![Base layer](docs/layout-base.png)
 
@@ -16,7 +16,7 @@ The repo also keeps the scripts and backups I used to set up the keymap.
 
 ![Layer 1](docs/layout-layer1.png)
 
-**Layer 2 (hold the right thumb).** F1–F12, media keys and Bluetooth channels.
+**Layer 2 (hold the right thumb).** F1–F12, media keys, Bluetooth channels, and the USB / BT output switch (top-left), which keeps typing over Bluetooth while the left half charges.
 
 ![Layer 2](docs/layout-layer2.png)
 
@@ -70,7 +70,9 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt   # first tim
 - Caps Lock → Esc. Caps Lock is no longer on the Cornix at all; use the laptop's key if you ever need it.
 - `'` went on the base layer, right of L. It's a dead key for accents with U.S. International – PC. `\|` moved to layer 1, on the same key.
 - Space moved to the middle thumb keys. The one-shot Cmd+Shift (left) and Hyper (right) keys moved to the tilted inner keys.
+- Hyper changed from one-shot to hold-only, like on the Alice. One-shot meant a tap stayed active until the next key.
 - Cmd and Layer 1 swapped places. Cmd is on the outer left thumb key, where a Mac's Cmd sits next to the space bar. Layer 1 is the third key on the bottom-left row.
 - Layer 1: `[` on K and `]` on L.
 - Layer 2: F1–F12, Previous/Play/Next on J/K/L, and brightness on M and `,`.
+- Layer 2: **USB / BT** output switch on the Tab key, above the Bluetooth channel keys. The Cornix starts in USB priority, so a cable in the left half sends keys over USB, even from a wall charger. Press the switch once to put it in Bluetooth priority. Then the cable only charges, and you can type while it charges.
 - Unused keys on layers 1–2 are transparent, so Shift, Cmd and the thumb keys keep working while you hold a layer.

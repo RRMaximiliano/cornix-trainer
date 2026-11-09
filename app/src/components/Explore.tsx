@@ -26,8 +26,9 @@ export function Explore({ km }: { km: Keymap }) {
     const oneShotIds: string[] = []
     for (const k of km.keys) {
       const info = describe(km.raw(0, k.row, k.col))
-      if (info.kind === 'mod') modKeyIds.push(k.id)
-      if (info.kind === 'oneshot') oneShotIds.push(k.id)
+      const group = [1, 2, 4, 8].filter((b) => (info.mods ?? 0) & b).length >= 2
+      if (group) oneShotIds.push(k.id)
+      else if (info.kind === 'mod') modKeyIds.push(k.id)
     }
     return { modKeyIds, oneShotIds }
   }, [km])
@@ -152,7 +153,8 @@ export function Explore({ km }: { km: Keymap }) {
           <h3>Thumb keys</h3>
           <ul className="facts">
             <li>Space is the middle thumb key on both sides.</li>
-            <li>Tap Cmd+Shift (left, tilted) or Hyper (right, tilted), then press one key. Hold them to use them like normal modifiers.</li>
+            <li>Hyper (right, tilted) works while held, like on your Alice.</li>
+            <li>Cmd+Shift (left, tilted) is one-shot: tap it, then press one key. You can also hold it.</li>
             <li>Cmd is the outer left thumb key.</li>
             <li>Hold the {thumbOf(km, 1)} for numbers and symbols. Hold the {thumbOf(km, 2)} for F-keys, media and Bluetooth.</li>
             <li>One knob turns the volume, the other scrolls.</li>
