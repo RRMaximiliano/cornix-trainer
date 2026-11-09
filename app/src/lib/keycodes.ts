@@ -106,6 +106,12 @@ export function describe(kc: number): KeyInfo {
     const inner = describe(kc & 0xff)
     return { label: `${m}+${inner.label}`, kind: 'action', help: `Sends ${m}+${inner.label}.` }
   }
+  if (kc >= 0x2000 && kc < 0x4000) {
+    // mod-tap: tap for the key, hold for the modifier
+    const tap = describe(kc & 0xff)
+    const m = modsName((kc >> 8) & 0x1f).replace('Right ', '')
+    return { label: tap.label, shiftLabel: `hold ${m === 'Shift' ? '⇧' : m}`, kind: 'action', help: `Tap for ${tap.label}. Hold for ${m}.` }
+  }
   if (kc >= 0x5220 && kc < 0x5240) {
     const layer = kc - 0x5220
     return { label: `Layer ${layer}`, kind: 'layer', layer, help: `Hold to use layer ${layer}.` }

@@ -8,7 +8,7 @@ The repo also keeps the scripts and backups I used to set up the keymap.
 
 ## My layout
 
-**Base layer.** Esc is where Caps Lock was. Cmd and Space are under the left thumb. Space and Hyper are under the right thumb. Hyper works only while held, like on the Alice. The arrow corner matches my QK Alice.
+**Base layer.** Esc is where Caps Lock was. Cmd and Space are under the left thumb. Space and Hyper are under the right thumb. Hyper works only while held, like on the Alice. The arrow corner matches my QK Alice. The left knob turns the volume and mutes when pressed. The right knob scrolls, and pressing it is Right Shift.
 
 ![Base layer](docs/layout-base.png)
 
@@ -70,6 +70,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt   # first tim
 - Caps Lock → Esc. Caps Lock is no longer on the Cornix at all; use the laptop's key if you ever need it.
 - `'` went on the base layer, right of L. It's a dead key for accents with U.S. International – PC. `\|` moved to layer 1, on the same key.
 - Space moved to the middle thumb keys. The one-shot Cmd+Shift (left) and Hyper (right) keys moved to the tilted inner keys.
+- Right knob press: Right Shift instead of middle click, on every layer. The Cornix had no right Shift, so shortcuts that need both Shift keys (like T3 Code's SnapShots) couldn't work.
 - Hyper changed from one-shot to hold-only, like on the Alice. One-shot meant a tap stayed active until the next key.
 - Cmd and Layer 1 swapped places. Cmd is on the outer left thumb key, where a Mac's Cmd sits next to the space bar. Layer 1 is the third key on the bottom-left row.
 - Layer 1: `[` on K and `]` on L.

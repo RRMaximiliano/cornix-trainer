@@ -157,7 +157,8 @@ export function Explore({ km }: { km: Keymap }) {
             <li>Cmd+Shift (left, tilted) is one-shot: tap it, then press one key. You can also hold it.</li>
             <li>Cmd is the outer left thumb key.</li>
             <li>Hold the {thumbOf(km, 1)} for numbers and symbols. Hold the {thumbOf(km, 2)} for F-keys, media and Bluetooth.</li>
-            <li>One knob turns the volume, the other scrolls.</li>
+            <li>Left knob: turn for volume, press to mute.</li>
+            <li>Right knob: turn to scroll, press for Right Shift. Left Shift + right knob press is &ldquo;both Shift keys&rdquo; (T3 Code SnapShots).</li>
           </ul>
         </section>
       </div>

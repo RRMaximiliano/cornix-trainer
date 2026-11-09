@@ -56,6 +56,11 @@ else:
             for c in range(C):
                 if L[r][c] == NO:
                     L[r][c] = TRNS
+    # Right knob press: Right Shift instead of middle click (never used), on every layer.
+    # Left Shift + right knob press = "both Shift keys" (T3 Code SnapShots).
+    L0[5][6] = 0xE5    # KC_RSFT
+    L1[5][6] = TRNS
+    L2[5][6] = TRNS
 
 k = Kb(0xE118, 0x0001)
 changed = 0
