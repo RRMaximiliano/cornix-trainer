@@ -110,6 +110,10 @@ export function describe(kc: number): KeyInfo {
     // mod-tap: tap for the key, hold for the modifier
     const tap = describe(kc & 0xff)
     const m = modsName((kc >> 8) & 0x1f).replace('Right ', '')
+    if ((kc & 0xff) === 0) {
+      // nothing on tap (e.g. Hyper): a hold-only modifier key
+      return { label: m, kind: 'mod', mods: (kc >> 8) & 0x0f, help: `${m} while held. A tap alone does nothing.` }
+    }
     return { label: tap.label, shiftLabel: `hold ${m === 'Shift' ? '⇧' : m}`, kind: 'action', help: `Tap for ${tap.label}. Hold for ${m}.` }
   }
   if (kc >= 0x5220 && kc < 0x5240) {

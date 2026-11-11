@@ -29,7 +29,9 @@ else:
     # Thumbs: Space on the resting (middle) keys, one-shot mods on the inner tilted keys
     L0[3][4], L0[3][5] = L0[3][5], L0[3][4]   # left:  Space <-> OSM(Cmd+Shift)
     L0[7][4], L0[7][5] = L0[7][5], L0[7][4]   # right: Space <-> OSM(Hyper)
-    L0[7][5] = 0x0F00  # Hyper only while held (like the Alice), not one-shot
+    # Hyper only while held (like the Alice), not one-shot. HYPR(KC_NO) 0x0F00 is stored but this
+    # firmware sends nothing for it, so use mod-tap MT(Hyper, KC_NO): hold = Hyper, tap = nothing.
+    L0[7][5] = 0x2F00
     # Cmd on the outer left thumb (Mac muscle memory); Layer 1 moves to Cmd's old bottom-row spot
     L0[3][2], L0[3][3] = L0[3][3], L0[3][2]
     # Layer 1: no Caps Lock anywhere (too easy to hit by accident); brackets on K / L
